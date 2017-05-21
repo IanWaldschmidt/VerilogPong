@@ -1,0 +1,3 @@
+//Justin Lee (jpl88) and Ian Waldschmidt(isw5)
+//Takes data from the NCO and ADC and determines what to send to the DAC
+module to_dac(input 

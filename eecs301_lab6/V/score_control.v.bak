@@ -1,0 +1,104 @@
+module score_control(input clk,
+					 input [3:0] p1_score, p2_score,
+					 output reg[6:0] hex0, hex1, hex4, hex5);
+
+	always @(posedge clk) begin
+		if(p1_score == 3'd0) begin
+			hex1 <= 7'b0000000;
+			hex0 <= 7'b0111111;
+		end
+		if(p1_score == 3'd1) begin
+			hex1 <= 7'b0000000;
+			hex0 <= 7'b0000110;
+		end
+		if(p1_score == 3'd2) begin
+			hex1 <= 7'b0000000;
+			hex0 <= 7'b1011011;
+		end
+		if(p1_score == 3'd3) begin
+			hex1 <= 7'b0000000;
+			hex0 <= 7'b1001111;
+		end
+		if(p1_score == 3'd4) begin
+			hex1 <= 7'b0000000;
+			hex0 <= 7'b1100110;
+		end
+		if(p1_score == 3'd5) begin
+			hex1 <= 7'b0000000;
+			hex0 <= 7'b1101101;
+		end
+		if(p1_score == 3'd6) begin
+			hex1 <= 7'b0000000;
+			hex0 <= 7'b1111101;
+		end
+		if(p1_score == 3'd7) begin
+			hex1 <= 7'b0000000;
+			hex0 <= 7'b0000111;
+		end
+		if(p1_score == 3'd8) begin
+			hex1 <= 7'b0000000;
+			hex0 <= 7'b1111111;
+		end
+		if(p1_score == 3'd9) begin
+			hex1 <= 7'b0000000;
+			hex0 <= 7'b1101111;
+		end
+		if(p1_score == 3'd10) begin
+			hex1 <= 7'b0000110;
+			hex0 <= 7'b0111111;
+		end
+		if(p1_score == 3'd11) begin
+			hex1 <= 7'b0000110;
+			hex0 <= 7'b0000110;
+		end
+		if(p2_score == 3'd0) begin
+			hex5 <= 7'b0000000;
+			hex4 <= 7'b0111111;
+		end
+		if(p2_score == 3'd1) begin
+			hex5 <= 7'b0000000;
+			hex4 <= 7'b0000110;
+		end
+		if(p2_score == 3'd2) begin
+			hex5 <= 7'b0000000;
+			hex4 <= 7'b1011011;
+		end
+		if(p2_score == 3'd3) begin
+			hex5 <= 7'b0000000;
+			hex4 <= 7'b1001111;
+		end
+		if(p2_score == 3'd4) begin
+			hex5 <= 7'b0000000;
+			hex4 <= 7'b1100110;
+		end
+		if(p2_score == 3'd5) begin
+			hex5 <= 7'b0000000;
+			hex4 <= 7'b1101101;
+		end
+		if(p2_score == 3'd6) begin
+			hex5 <= 7'b0000000;
+			hex4 <= 7'b1111101;
+		end
+		if(p2_score == 3'd7) begin
+			hex5 <= 7'b0000000;
+			hex4 <= 7'b0000111;
+		end
+		if(p2_score == 3'd8) begin
+			hex5 <= 7'b0000000;
+			hex4 <= 7'b1111111;
+		end
+		if(p2_score == 3'd9) begin
+			hex5 <= 7'b0000000;
+			hex4 <= 7'b1101111;
+		end
+		if(p2_score == 3'd10) begin
+			hex5 <= 7'b0000110;
+			hex4 <= 7'b0111111;
+		end
+		if(p2_score == 3'd11) begin
+			hex5 <= 7'b0000110;
+			hex4 <= 7'b0000110;
+		end
+	end
+
+endmodule

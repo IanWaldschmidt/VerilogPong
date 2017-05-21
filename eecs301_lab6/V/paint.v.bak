@@ -1,0 +1,3 @@
+//Justin Lee (jpl88) and Ian Waldschmidt (isw5)
+//Paints the paddles, ball, and score to the screen
+module paint(

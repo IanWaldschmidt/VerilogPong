@@ -1,0 +1,46 @@
+module adc_In(input clk,
+			  output reg adcOut, cs, valid); 
+	
+	reg[15:0] shiftValue;
+	reg[7:0] cycle;
+
+	paramater writeBits = 1'b1;
+	paramater seqBits = 1'b0;
+	parameter randomBits = 1'b0;
+	paramater adressBits = 3'b000;
+	paramater powerBits = 2'b11;
+	paramater shadowBits = 1'b0;
+	parameter rangeBits = 1'b0;
+	paramater codingBits = 1'b0;
+
+	initial begin
+		cycle <= 8'b00000000;
+	end
+
+	always @(posedge clk) begin
+		if(cycle == 8'b00000000)begin
+			shiftValue <= {writeBits, seqBits, randomBits, adressBits, powerBits, shadowBits, randomBits, rangeBits, codingBits, randomBits, randomBits, 				randomBits, randomBits};
+		end
+		else if(cycle < 8'b00010001)begin
+			cs < 1'b0;
+			valid <= 1'b0;
+			adcOut <= shiftValue[16-cycle];
+		end
+		else if(cycle == 8'b00010001) begin
+			cs <= 1'b1;
+			valid <= 1'b1;
+			adcOut <= 1'b0;
+		end
+		else if(cycle < 8'b11001000) begin
+			cs <= 1'b1;
+			valid <= 1'b0;
+			adcOut <= 1'b0;
+		end
+		cycle <= cycle + 1'b1;
+		if(cycle == 8'd199) begin
+			cycle <= 8'b00000000;
+		end
+	end
+
+endmodule
+

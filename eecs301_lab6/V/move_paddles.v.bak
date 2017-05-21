@@ -1,0 +1,48 @@
+//Justin Lee(jpl88) & Ian Waldschmidt(isw5)
+module move_paddles(input key0, key1, encoderA, encoderB, clk, gameReset
+					output [7:0] p1_pos, p2_pos);
+
+	reg[19:0] counter;
+	reg slowclk <= counter[19];
+	reg lastA;
+
+	paramater PADDLE_HEIGHT = 7'd50;
+
+	initial begin
+		p1_pos <= 8'd135;
+		p2_pos <= 8'd135;
+		counter <= 20'd0;
+		lastA <= encoderA;
+	end 
+
+	always @(posedge clk) begin
+		counter <= counter + 1'b1;
+		if(counter == 20'b11111111111111111111) begin
+			counter <=0;
+		end
+	end
+
+	always @(posedge slowclk) begin
+		if(gameOver) begin
+			p1_pos <= 8'd135;
+			p2_pos <= 8'd135;
+		end
+		else begin
+			if(encoderA != lastA) begin
+				if(~encoderB & p2_pos != (270 - PADDLE_HEIGHT)) begin
+					p2_pos <= p2_pos + 1;
+				end
+				if(encoderB & p2_pos != (0 + PADDLE_HEIGHT)) begin
+					p2_pos <= p2_pos - 1;
+				end
+			end
+			if(key0) begin
+				p1_pos <= p1_pos + 1;
+			end
+			else if(key1) begin
+				p1_pow <= p1_pos -1;
+			end
+		end
+	end
+
+endmodule

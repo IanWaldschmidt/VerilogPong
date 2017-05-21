@@ -1,0 +1,3 @@
+//Justin Lee (jpl88) and Ian Waldschmidt (isw5)
+//Reads sound input at ADC and determines what should be output to DAC
+module sounds(input clk, 

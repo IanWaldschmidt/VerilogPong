@@ -1,0 +1,13 @@
+//Justin Lee (jpl88) and Ian Waldschmidt (isw5)
+//Module that defines game parameters in one place for easy manipulation
+module constant(output reg [7:0] BALL_RADIUS, PADDLE_WIDTH,
+					 PADDLE_HEIGHT, PADDING);
+		 
+	initial begin
+		BALL_RADIUS <= 7'd5;		//Ball radius
+		PADDLE_WIDTH <= 7'd10;	//Paddle width
+		PADDLE_HEIGHT <= 7'd50;	//Distance from center of paddle to top or bottom of paddle
+		PADDING <= 7'd16;			//Padding between edge of screen and game elements.
+										//This must be divisible by 4 because assuming so makes our logic easier.
+	end
+endmodule
